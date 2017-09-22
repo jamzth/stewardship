@@ -1,6 +1,6 @@
-<?php 
+<?php
 class Stewardship_Meta {
-	
+
 	/**
 	 * Construct.
 	 */
@@ -24,13 +24,13 @@ class Stewardship_Meta {
 		// Date Fixing
 		add_filter( 'cmb2_localized_data', array($this,'update_date_picker_defaults') );
 	}
-	
+
 	// Person metaboxes
 	function steward_people_metaboxes($post_id) {
-	
+
 	    // Start with an underscore to hide fields from custom fields list
 	    $prefix = '_steward_';
-	
+
 	    // Personal Details metabox
 	    $cmb = new_cmb2_box( array(
 	        'id'            => $prefix . 'steward_person_details',
@@ -40,7 +40,7 @@ class Stewardship_Meta {
 	        'priority'      => 'high',
 	        'show_names'    => true, // Show field names on the left
 		    ) );
-		
+
 			// Birthday
 		    $cmb->add_field( array(
 		        'name' => __( 'Birthday', 'steward' ),
@@ -48,7 +48,7 @@ class Stewardship_Meta {
         		'type' => 'text_date',
         		'date_format' => 'M j, Y',
 		    ) );
-		    
+
 		    // Gender
 		    $cmb->add_field( array(
 	    		'name' => __( 'Gender', 'steward' ),
@@ -59,7 +59,7 @@ class Stewardship_Meta {
 	    			'female' => __( 'Female', 'steward' ),
 	    		),
 	    	) );
-		    
+
 		    // Phone Number
 		    $cmb->add_field( array(
 		        'name' => __( 'Phone', 'steward' ),
@@ -74,7 +74,7 @@ class Stewardship_Meta {
 		        //	'position' => 2, // Set as the second column.
 		        //),
 		    ) );
-		    
+
 		    // Email
 		    $cmb->add_field( array(
 		    	'name' => __( 'Email', 'steward' ),
@@ -85,7 +85,7 @@ class Stewardship_Meta {
 		    	),
 		    	'repeatable' => true,
 		    ) );
-		    
+
 		    // Address
 		    $cmb->add_field( array(
 		    		'name' => esc_html__( 'Address', 'steward' ),
@@ -96,7 +96,7 @@ class Stewardship_Meta {
 		    		),
 		    		'repeatable' => true,
 		    	) );
-	
+
 	    // Household metabox
 	    $cmb = new_cmb2_box( array(
 	    		'id'           => 'steward_person_household',
@@ -107,7 +107,7 @@ class Stewardship_Meta {
 	    		'show_names'   => false, // Show field names on the left
 	    		'closed'     => true,
 	    	) );
-	    	
+
 	    	// Marital Status
 	    	$cmb->add_field( array(
 	    		'name' => __( 'Marital Status', 'steward' ),
@@ -121,7 +121,7 @@ class Stewardship_Meta {
 	    			'widowed' => __( 'Widowed', 'steward' ),
 	    		),
 	    	) );
-	    	
+
 	    	// Household instructions
 	    	$cmb->add_field( array(
     			//'name' => esc_html__( 'Instructions', 'cmb2' ),
@@ -129,7 +129,7 @@ class Stewardship_Meta {
     			'id'   => $prefix . 'household_desc',
     			'type' => 'title',
 	    	) );
-	    	
+
 	    	// Household
 	    	$cmb->add_field( array(
 	    		'name'    => __( 'Household', 'steward' ),
@@ -138,10 +138,10 @@ class Stewardship_Meta {
 	    		'options' => array(
 	    			'show_thumbnails' => true, // Show thumbnails on the left
 	    			'filter_boxes'    => true, // Show a text box for filtering the results
-	    			'query_args'      => array( 'posts_per_page' => 10 ), // override the get_posts args
+	    			'query_args'      => array( 'posts_per_page' => 10, 'post_type' => 'steward_people', ), // override the get_posts args
 	    		),
 	    	) );
-	    	
+
 	    // Additional Notes metabix
 	    $cmb = new_cmb2_box( array(
 	    		'id'           => 'steward_person_notes',
@@ -152,7 +152,7 @@ class Stewardship_Meta {
 	    		'show_names'   => false, // Show field names on the left
 	    		//'closed'     => false,
 	    	) );
-	    	
+
 	    	// Notes
 	    	$cmb->add_field( array(
 	    	    'name'    => 'Additional Notes',
@@ -165,7 +165,7 @@ class Stewardship_Meta {
     	            'teeny' => true, // output the minimal editor config used in Press This
     	        ),
 	    	) );
-	    	
+
 	    // School metabox
 	    $cmb = new_cmb2_box( array(
 	    		'id'           => $prefix . 'steward_people_school',
@@ -175,7 +175,7 @@ class Stewardship_Meta {
 	    		'priority'     => 'core',
 	    		'closed'     => true,
 	    	) );
-	    
+
 	    	$cmb->add_field( array(
     			'id' => $prefix . 'steward_person_school_type',
     			'type' => 'select',
@@ -189,13 +189,13 @@ class Stewardship_Meta {
     				'other' => __( 'Other', 'steward' ),
     			),
     		) );
-	    
+
 	    	$cmb->add_field( array(
 	    		'name' => __( 'Name', 'steward' ),
 	    		'id' => $prefix . 'steward_person_school_name',
 	    		'type' => 'text',
 	    	) );
-	    
+
 	    	$cmb->add_field( array(
 	    		'name' => __( 'Grade', 'steward' ),
 	    		'id' => $prefix . 'steward_person_school_grade',
@@ -218,13 +218,13 @@ class Stewardship_Meta {
 	    			'12' => __( '12', 'steward' ),
 	    		),
 	    	) );
-	    
+
 	    	$cmb->add_field( array(
 	    		'name' => __( 'Medical Notes', 'steward' ),
 	    		'id' => $prefix . 'steward_person_school_notes',
 	    		'type' => 'textarea_small',
 	    	) );
-	    	
+
     	// Social Profiles metabox
     	$cmb = new_cmb2_box( array(
     			'id'           => $prefix . 'steward_people_social',
@@ -234,27 +234,27 @@ class Stewardship_Meta {
     			'priority'     => 'low',
     			'closed'     => true,
     		) );
-    	
+
     		$cmb->add_field( array(
     			'name' => __( 'Twitter', 'steward' ),
     			'id' => $prefix . 'steward_person_social_twitter',
     			'type' => 'text_medium',
     		) );
-    	
+
     		$cmb->add_field( array(
     			'name' => __( 'Facebook URL', 'steward' ),
     			'id' => $prefix . 'steward_person_social_facebook',
     			'type' => 'text_url',
     		) );
-    	
+
     		$cmb->add_field( array(
     			'name' => __( 'Instagram', 'steward' ),
     			'id' => $prefix . 'steward_person_social_instagram',
     			'type' => 'text_medium',
     		) );
-	    	
+
 	}
-	
+
 	// Add Person's Image to Admin
 	function steward_posts_columns($columns){
 	    $columns['people_image'] = __('Image');
@@ -267,13 +267,13 @@ class Stewardship_Meta {
 	            break;
 	    }
 	}
-	
+
 	// Move Image metabox
 	function be_rotator_image_metabox() {
 		remove_meta_box( 'postimagediv', 'steward_people', 'side' );
 		add_meta_box('postimagediv', __('Person\'s Image'), 'post_thumbnail_meta_box', 'steward_people', 'side', 'high');
 	}
-	
+
 	//Add Household to Admin Column
 	function steward_house_columns($columns){
 	    $columns['_steward_attached_cmb2_attached_posts'] = __('Household');
@@ -294,7 +294,7 @@ class Stewardship_Meta {
 	                }
 	        }
 	}
-	
+
 	//Add Info to Admin Column
 	function steward_info_columns($columns){
 	    $columns['_steward_info'] = __('Contact Info');
@@ -318,10 +318,10 @@ class Stewardship_Meta {
 	                    		<li style="list-style: none;">
 	                    			<?php echo $phone_post; ?>
 	                    		</li>
-	                    <?php } ?> <br /> 
+	                    <?php } ?> <br />
 	                <?php }
 	                if (!$address == ""){
-	                    foreach ( $address as $address_post ) { 
+	                    foreach ( $address as $address_post ) {
 	                    $posted = get_post( $address );?>
 	                    		<li style="list-style: none;">
 	                    			<?php echo $address_post['address-1']; ?>
@@ -332,7 +332,7 @@ class Stewardship_Meta {
 	                    			</li>
 	                    		<?php } ?>
 	                    		<li style="list-style: none;">
-	                    			<?php echo $address_post['city']; ?>,&nbsp; 
+	                    			<?php echo $address_post['city']; ?>,&nbsp;
 	                    			<?php echo $address_post['state']; ?>&nbsp;
 	                    			<?php echo $address_post['zip'];?>
 	                    		</li>
@@ -340,7 +340,7 @@ class Stewardship_Meta {
 	                }
 	        }
 	}
-	
+
 	//Add Birthday to Admin Column
 	function steward_birthday_columns($columns){
 	    $columns['_steward_birthday'] = __('Birthday');
@@ -357,12 +357,12 @@ class Stewardship_Meta {
 	                <?php }
 	        }
 	}
-	
+
 	// Fix Datepicker year range
 	function update_date_picker_defaults( $l10n ) {
-	
+
 	    $l10n['defaults']['date_picker']['yearRange'] = '1920:+0';
-	
+
 	    return $l10n;
 	}
 

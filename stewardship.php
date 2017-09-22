@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Stewardship {
-	
+
 	/**
 	 * Construct.
 	 */
@@ -29,8 +29,8 @@ class Stewardship {
 		add_action( 'init', array($this,'steward_text_domain'));
 		// Remove Connection Submenu
 		//add_action( 'admin_menu', array($this,'steward_remove_submenus'), 999 );
-		
-		
+
+
 		// Keep Updating Please
 		$this->item_name	= 'Stewardship';
 		$this->file			= __FILE__;
@@ -38,11 +38,11 @@ class Stewardship {
 		$this->version		= '1.0';
 		$this->author		= 'James Hammack';
 		add_action( 'init', array( $this, 'load_updater' ), 0 );
-	
-	
+
+
 	}
-	
-	
+
+
 	/**
 	 * Run the updater scripts from the Sidekick
 	 * @return void
@@ -53,7 +53,7 @@ class Stewardship {
 			$this->updater = new WPO_Updater( $this->item_name, $this->file, $this->license_slug, $this->version, $this->author );
 		}
 	}
-	
+
 	function includes(){
 		if( is_admin() ) {
 			//require_once dirname( __FILE__ ) .'/assets/p2p/posts-to-posts.php';
@@ -61,15 +61,15 @@ class Stewardship {
 		// Custom Posts for People
 		require_once dirname( __FILE__ ) . '/includes/cpt.php';
 		// Require CMB2
-		if ( file_exists(  __DIR__ . '/assets/cmb2/init.php' ) ) {
-		  require_once  dirname( __FILE__ ) . '/assets/cmb2/init.php';
+		if ( file_exists(  __DIR__ . '/assets/CMB2/init.php' ) ) {
+		  require_once  dirname( __FILE__ ) . '/assets/CMB2/init.php';
 		  require_once  dirname( __FILE__ ) . '/assets/cmb2-attached-posts/cmb2-attached-posts-field.php';
 		}
 		// Metaboxes for People
 		require_once dirname( __FILE__ ) . '/includes/metaboxes.php';
 		require_once dirname( __FILE__ ) . '/includes/status_walker.php';
 	}
-	
+
 	function steward_text_domain() {
 		load_plugin_textdomain( 'steward' );
 	}

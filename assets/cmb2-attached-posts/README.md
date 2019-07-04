@@ -3,9 +3,7 @@ CMB2 Attached Posts Field
 
 Custom field for [CMB2](https://github.com/WebDevStudios/CMB2).
 
-The post IDs are saved in an array, which can be rearranged by dragging and dropping posts in the attached posts column.
-
-If the ability to search for a post and attach it is more in line with what you need, you might consider [CMB2 Post Search field](https://github.com/WebDevStudios/CMB2-Post-Search-field) instead.
+The post IDs are saved in an array, which can be rearranged by dragging and dropping posts in the attached posts column. Now incorporates the same search field as the [CMB2 Post Search field](https://github.com/WebDevStudios/CMB2-Post-Search-field).
 
 ## Installation
 
@@ -37,7 +35,20 @@ Once you have the post data for the post ID, you can proceed with the desired fu
 1. Field display  
 ![Field display](https://raw.githubusercontent.com/WebDevStudios/cmb2-attached-posts/master/attached-posts-field.png)`
 
+1. Post search  
+![Post search](https://raw.githubusercontent.com/WebDevStudios/cmb2-attached-posts/master/attached-posts-search.gif)`
+
 ## Changelog
+
+### 1.2.7
+* Add default column display output. Simply add `'column' => true,` to your field registration.
+
+### 1.2.6
+* Add post type label next to post title when multiple post-types are specified in the query args.
+* Open attached-posts links in new window, so as not to leave the current editing window. Props [Shelob9](https://github.com/Shelob9), [#37](https://github.com/WebDevStudios/cmb2-attached-posts/pull/37), [#36](https://github.com/CMB2/cmb2-attached-posts/issues/36).
+
+### 1.2.5
+* Combined the best bits from the [CMB2 Post Search field](https://github.com/WebDevStudios/CMB2-Post-Search-field) type and this field type, so now you can search for additional posts/pages/etc to be attached. User search is not currently supported. ([#7](https://github.com/WebDevStudios/cmb2-attached-posts/pull/7)).
 
 ### 1.2.4
 * Add support for attaching Users instead of Posts/Custom Posts. Props [mckernanin](https://github.com/mckernanin) ([#27](https://github.com/WebDevStudios/cmb2-attached-posts/pull/27)).
